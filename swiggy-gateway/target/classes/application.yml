@@ -1,0 +1,37 @@
+spring:
+ cloud:
+   gateway:
+     routes:
+       - id: swiggy-app
+         uri: lb://SWIGGY-APP
+         predicates:
+           - Path=/swiggy/**
+         filters:
+           - AuthenticationFilter
+
+       - id: AdService
+         uri: lb://ADSERVICE
+         predicates:
+           - Path=/api/v1/ads/**
+         filters:
+           - AuthenticationFilter
+
+       - id: PackageService
+         uri: lb://PACKAGESERVICE
+         predicates:
+           - Path=/api/v1/packages/**
+         filters:
+           - AuthenticationFilter
+
+       - id: identity-service
+         uri: lb://IDENTITY-SERVICE
+         predicates:
+           - Path=/auth/**
+
+ application:
+   name: SWIGGY-GATEWAY
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
