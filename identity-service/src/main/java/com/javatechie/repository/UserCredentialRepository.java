@@ -1,5 +1,6 @@
 package com.javatechie.repository;
 
+import com.javatechie.dto.AuthRequest;
 import com.javatechie.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 

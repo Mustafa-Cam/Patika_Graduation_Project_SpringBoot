@@ -1,6 +1,16 @@
 spring:
  cloud:
    gateway:
+     globalcors:
+       corsConfigurations:
+         '[/**]':
+           allowedOrigins: "http://localhost:3000"  # Buraya izin verilen origin URL'lerini ekleyin
+           allowedMethods:
+             - GET
+             - POST
+           allowedHeaders:
+             - "*"
+           allowCredentials: true
      routes:
        - id: swiggy-app
          uri: lb://SWIGGY-APP
@@ -27,6 +37,20 @@ spring:
          uri: lb://IDENTITY-SERVICE
          predicates:
            - Path=/auth/**
+
+       - id: PaymentService
+         uri: lb://PAYMENTSERVICE
+         predicates:
+           - Path= /api/v1/payments/**
+         filters:
+           - AuthenticationFilter
+
+       - id: UserService
+         uri: lb://USERSERVICE
+         predicates:
+           - Path=/api/v1/user/**
+         filters:
+           - AuthenticationFilter
 
  application:
    name: SWIGGY-GATEWAY

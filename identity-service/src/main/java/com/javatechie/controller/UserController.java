@@ -21,6 +21,7 @@ public class UserController {
 
     @GetMapping("/findbyusername/{username}")
     Optional<User> findByUsername(@PathVariable String username){
+        System.out.println("usercontrollerdaki username \n"+username);
        return userService.findByUsername(username);
     }
 

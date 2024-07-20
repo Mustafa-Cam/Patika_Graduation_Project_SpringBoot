@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="AdService" />
-        <module name="swiggy-service-registry" />
         <module name="PackageService" />
         <module name="swiggy-app" />
         <module name="swiggy-gateway" />
+        <module name="UserService" />
+        <module name="swiggy-service-registry" />
         <module name="identity-service" />
+        <module name="PaymentService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -23,6 +25,8 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="AdService" options="-parameters" />
       <module name="PackageService" options="-parameters" />
+      <module name="PaymentService" options="-parameters" />
+      <module name="UserService" options="-parameters" />
       <module name="identity-service" options="-parameters" />
       <module name="restaurant-service" options="-parameters" />
       <module name="swiggy-app" options="-parameters" />

@@ -11,6 +11,8 @@
         <option value="$PROJECT_DIR$/swiggy-service-registry/pom.xml" />
         <option value="$PROJECT_DIR$/AdService/pom.xml" />
         <option value="$PROJECT_DIR$/PackageService/pom.xml" />
+        <option value="$PROJECT_DIR$/UserService/pom.xml" />
+        <option value="$PROJECT_DIR$/PaymentService/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

@@ -3,6 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/AdService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PackageService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PaymentService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/UserService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/identity-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/restaurant-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/swiggy-app/src/main/java" charset="UTF-8" />

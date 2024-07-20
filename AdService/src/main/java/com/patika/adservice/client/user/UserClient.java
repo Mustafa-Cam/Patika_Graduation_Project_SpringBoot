@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
-@FeignClient(value ="userservice", url ="localhost:8082/api/v1/user")
+@FeignClient(value ="userservice", url ="localhost:8085/api/v1/user")
 public interface UserClient {
 
     @GetMapping("/findbyusername/{username}")
     Optional<User> findByUsername(@PathVariable String username);
-
 
 }

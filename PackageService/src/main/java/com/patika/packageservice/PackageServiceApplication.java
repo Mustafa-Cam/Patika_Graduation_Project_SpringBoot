@@ -16,9 +16,4 @@ public class PackageServiceApplication {
 		SpringApplication.run(PackageServiceApplication.class, args);
 	}
 
-
-	@Bean
-	public RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
 }

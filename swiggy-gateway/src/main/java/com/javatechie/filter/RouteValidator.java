@@ -12,7 +12,8 @@ public class RouteValidator {
     public static final List<String> openApiEndpoints = List.of( // açık endpointleri belirtiyoruz.
             "/auth/register",
             "/auth/token",
-            "/eureka"
+            "/eureka",
+            "/api/v1/ads/all"
     );
 
     public Predicate<ServerHttpRequest> isSecured =

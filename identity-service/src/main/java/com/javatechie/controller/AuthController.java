@@ -19,15 +19,27 @@ public class AuthController {
     private AuthenticationManager authenticationManager;
 
     @PostMapping("/register")
-    public String addNewUser(@RequestBody User user) {
+    public String addNewUser(@RequestBody AuthRequest user) {
         return service.saveUser(user);
     }
 
     @PostMapping("/token")
     public String getToken(@RequestBody AuthRequest authRequest) {
         Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+//            System.out.println("authenticated: \n"+authenticate);
         if (authenticate.isAuthenticated()) {
             return service.generateToken(authRequest.getUsername());
+        } else {
+            throw new RuntimeException("invalid access");
+        }
+    }
+
+    @PostMapping("/refreshToken")
+    public String getRefreshToken(@RequestBody AuthRequest authRequest) {
+        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+//            System.out.println("authenticated: \n"+authenticate);
+        if (authenticate.isAuthenticated()) {
+            return service.refreshToken(authRequest.getUsername());
         } else {
             throw new RuntimeException("invalid access");
         }

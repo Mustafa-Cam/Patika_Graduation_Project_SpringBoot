@@ -1,5 +1,6 @@
 package com.javatechie.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.javatechie.entity.enums.RoleEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,8 +28,20 @@ public class User {
     private RoleEnum role = RoleEnum.USER; // Default role
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Ad> advertisements;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Package> packages;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", role=" + role +
+                '}';
+    }
 }

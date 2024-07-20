@@ -1,26 +1,39 @@
 package com.patika.packageservice.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.patika.packageservice.model.enums.PackageEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.patika.packageservice.model.User;
+import lombok.ToString;
+
 import java.time.LocalDateTime;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+
 @Table(name = "packages")
 public class Package {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String description;
+
+    @Enumerated(EnumType.STRING)
+    private PackageEnum packageType;
+
+//    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "user_id", nullable = false)
-    @JsonIgnore // JSON dönüşümünde User alanını görmezden gelmek için
     private User user;
 
     private int adCount;
@@ -29,4 +42,3 @@ public class Package {
 
 
 }
-
