@@ -35,6 +35,7 @@ public class AuthConfig {
                 .csrf().disable()
                 .authorizeRequests()
                 .requestMatchers("/auth/register", "/auth/token", "/auth/refreshToken","/auth/validate", "/api/v1/ads/all").permitAll()
+                .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .build();

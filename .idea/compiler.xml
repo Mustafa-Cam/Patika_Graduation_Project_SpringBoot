@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="AdService" />
         <module name="PackageService" />
+        <module name="AdminService" />
         <module name="swiggy-app" />
         <module name="swiggy-gateway" />
         <module name="UserService" />
@@ -24,6 +25,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="AdService" options="-parameters" />
+      <module name="AdminService" options="-parameters" />
       <module name="PackageService" options="-parameters" />
       <module name="PaymentService" options="-parameters" />
       <module name="UserService" options="-parameters" />

@@ -52,6 +52,13 @@ spring:
          filters:
            - AuthenticationFilter
 
+       - id: AdminService
+         uri: lb://ADMINSERVICE
+         predicates:
+           - Path=/api/v1/admin/**
+         filters:
+           - AuthenticationFilter
+
  application:
    name: SWIGGY-GATEWAY
 

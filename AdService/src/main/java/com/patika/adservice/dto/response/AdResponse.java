@@ -1,4 +1,4 @@
-package com.patika.adservice.dto;
+package com.patika.adservice.dto.response;
 
 
 
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class AdResponse {
-    private int id;
+    private long id;
     private String productOwner;
     private String title;
     private String description;

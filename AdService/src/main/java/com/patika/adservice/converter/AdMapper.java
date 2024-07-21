@@ -1,8 +1,7 @@
 package com.patika.adservice.converter;
 
-import com.patika.adservice.dto.AdResponse;
+import com.patika.adservice.dto.response.AdResponse;
 import com.patika.adservice.model.Ad;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,6 +13,7 @@ public class AdMapper {
 
     public static AdResponse toDto(Ad ad) {
         AdResponse dto = new AdResponse();
+        dto.setId(ad.getId());
         dto.setTitle(ad.getTitle());
         dto.setProductOwner(ad.getUser().getUsername());
         dto.setDescription(ad.getDescription());

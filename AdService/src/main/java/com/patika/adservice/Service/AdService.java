@@ -1,8 +1,6 @@
 package com.patika.adservice.Service;
 import com.patika.adservice.client.packages.service.PackageService;
-import com.patika.adservice.client.user.UserClient;
 import com.patika.adservice.client.user.service.UserService;
-import com.patika.adservice.dto.AdResponse;
 import com.patika.adservice.model.Ad;
 import com.patika.adservice.model.Product;
 import com.patika.adservice.model.User;
@@ -11,10 +9,11 @@ import com.patika.adservice.repository.AdRepository;
 import com.patika.adservice.repository.ProductRepository;
 import com.patika.adservice.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.patika.adservice.Product.ProductData;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -86,13 +85,23 @@ public class AdService {
 
 
 
+
     @Transactional
+    @Async
     public Ad updateAdStatus(Long adId, AdStatus status) {
         Ad ad = adRepository.findById(adId).orElseThrow(() -> new RuntimeException("Ad not found"));
         ad.setStatus(status);
         ad.setUpdatedAt(LocalDateTime.now());
         return adRepository.save(ad);
     }
+
+//    @Transactional
+//    public Ad updateAdStatus(Long adId, AdStatus status) {
+//        Ad ad = adRepository.findById(adId).orElseThrow(() -> new RuntimeException("Ad not found"));
+//        ad.setStatus(status);
+//        ad.setUpdatedAt(LocalDateTime.now());
+//        return adRepository.save(ad);
+//    }
 
     public List<Ad> findAdsByUserAndStatus(User user, AdStatus status) {
         return adRepository.findByUserAndStatus(user, status);

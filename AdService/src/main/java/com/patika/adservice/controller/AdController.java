@@ -4,15 +4,12 @@ import com.patika.adservice.Service.AdService;
 import com.patika.adservice.client.packages.service.PackageService;
 import com.patika.adservice.client.user.service.UserService;
 import com.patika.adservice.converter.AdMapper;
-import com.patika.adservice.dto.AdResponse;
+import com.patika.adservice.dto.response.AdResponse;
 import com.patika.adservice.model.Ad;
-import com.patika.adservice.model.User;
 import com.patika.adservice.model.enums.AdStatus;
 import com.patika.adservice.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
@@ -56,6 +53,8 @@ public class AdController {
         return adService.Test();
     }
 
+
+
     @GetMapping("/all")
     public ResponseEntity<List<AdResponse>> getAll() {
         List<Ad> allAds = adService.findAll();
@@ -64,10 +63,20 @@ public class AdController {
     }
 
 
-    @PutMapping("/{id}/status")
+    @PostMapping("/{id}/status")
     public ResponseEntity<Ad> updateAdStatus(@PathVariable Long id, @RequestParam AdStatus status) {
         Ad updatedAd = adService.updateAdStatus(id, status);
         return ResponseEntity.ok(updatedAd);
+    }
+
+    @GetMapping("/adDetail/{id}")
+    public ResponseEntity<AdResponse> getAdDetail(@PathVariable Long id) {
+        Optional<Ad> adDetail = adService.findById(id);
+        if (adDetail.isEmpty()) {
+            throw new RuntimeException("Ad not found");
+        }
+        AdResponse adResponse = AdMapper.toDto(adDetail.get());
+        return ResponseEntity.ok(adResponse);
     }
 
 
