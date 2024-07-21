@@ -20,12 +20,10 @@ public class AdminController {
     private AdClient adClient;
 
     @PostMapping("/makeActive/{id}")
-        public Future<ResponseEntity<Ad>> makeActive(@PathVariable int id,@RequestParam AdStatus status) {
-          Future<ResponseEntity<Ad>> ad = adClient.updateAdStatus(id,status);
+        public Future<ResponseEntity<Ad>> makeActive(@PathVariable int id, @RequestParam AdStatus status) {
+          Future<ResponseEntity<Ad>> ad = adClient.updateAdStatusForAdmin(id,status);
           System.out.println("ad in admincontroller "+ad);
             return ad;
     }
-
-
 }
 

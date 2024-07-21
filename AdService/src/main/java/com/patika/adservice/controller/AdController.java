@@ -5,8 +5,11 @@ import com.patika.adservice.client.packages.service.PackageService;
 import com.patika.adservice.client.user.service.UserService;
 import com.patika.adservice.converter.AdMapper;
 import com.patika.adservice.dto.response.AdResponse;
+import com.patika.adservice.exception.ExceptionMessages;
+import com.patika.adservice.exception.PatikaException;
 import com.patika.adservice.model.Ad;
 import com.patika.adservice.model.enums.AdStatus;
+import com.patika.adservice.model.enums.RoleEnum;
 import com.patika.adservice.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -63,9 +66,24 @@ public class AdController {
     }
 
 
+    @PostMapping("/{id}/statusAdmin")
+    public ResponseEntity<String> updateAdStatusForAdmin(@PathVariable Long id, @RequestParam AdStatus status) {
+
+        adService.updateAdStatusForAdmin(id, status);
+        return ResponseEntity.ok("status değisti.");
+    }
+
     @PostMapping("/{id}/status")
-    public ResponseEntity<Ad> updateAdStatus(@PathVariable Long id, @RequestParam AdStatus status) {
-        Ad updatedAd = adService.updateAdStatus(id, status);
+    public ResponseEntity<Ad> updateAdStatusForUser(@PathVariable Long id, @RequestParam AdStatus status) {
+        Optional<Ad> ad = adService.findById(id);
+        if (ad.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        AdStatus adstatus = ad.get().getStatus();
+        if(adstatus == AdStatus.IN_REVIEW) {
+             throw new PatikaException("IN_Review Durumundaki status'leri değiştiremessiniz.");
+        }
+        Ad updatedAd = adService.updateAdStatusForUser(id, status);
         return ResponseEntity.ok(updatedAd);
     }
 

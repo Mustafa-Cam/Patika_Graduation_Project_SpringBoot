@@ -87,12 +87,21 @@ public class AdService {
 
 
     @Transactional
-    @Async
-    public Ad updateAdStatus(Long adId, AdStatus status) {
+//    @Async
+    public Ad updateAdStatusForUser(Long adId, AdStatus status) {
         Ad ad = adRepository.findById(adId).orElseThrow(() -> new RuntimeException("Ad not found"));
         ad.setStatus(status);
         ad.setUpdatedAt(LocalDateTime.now());
         return adRepository.save(ad);
+    }
+
+    @Transactional
+    @Async
+    public void updateAdStatusForAdmin(Long adId, AdStatus status) {
+        Ad ad = adRepository.findById(adId).orElseThrow(() -> new RuntimeException("Ad not found"));
+        ad.setStatus(status);
+        ad.setUpdatedAt(LocalDateTime.now());
+         adRepository.save(ad);
     }
 
 //    @Transactional

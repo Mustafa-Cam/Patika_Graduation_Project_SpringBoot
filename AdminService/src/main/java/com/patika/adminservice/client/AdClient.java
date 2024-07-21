@@ -17,7 +17,7 @@ import java.util.concurrent.Future;
 public interface AdClient {
 
     @Async
-    @PostMapping("/{id}/status")
-    Future<ResponseEntity<Ad>> updateAdStatus(@PathVariable long id, @RequestParam AdStatus status);
+    @PostMapping("/{id}/statusAdmin")
+    Future<ResponseEntity<Ad>> updateAdStatusForAdmin(@PathVariable long id, @RequestParam AdStatus status);
 
 }

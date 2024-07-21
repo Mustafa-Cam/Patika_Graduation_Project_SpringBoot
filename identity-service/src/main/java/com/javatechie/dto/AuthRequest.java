@@ -14,4 +14,7 @@ public class AuthRequest {
     private String password;
     private String email;
     private RoleEnum role;
+
+    public AuthRequest(String user, String password) {
+    }
 }
