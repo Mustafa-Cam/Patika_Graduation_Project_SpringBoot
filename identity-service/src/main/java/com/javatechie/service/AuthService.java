@@ -1,6 +1,6 @@
 package com.javatechie.service;
 
-import com.javatechie.config.CustomUserDetails;
+
 import com.javatechie.config.CustomUserDetailsService;
 import com.javatechie.dto.AuthRequest;
 import com.javatechie.entity.User;
@@ -27,12 +27,13 @@ public class AuthService {
 
 
     public String saveUser(AuthRequest credential) {
-        // Kullanıcı adı ile mevcut kullanıcıyı kontrol et
+        // Kullanıcı adı ile mevcut kullanıcıyı kontrol etme.
         Optional<User> existingUser = repository.findByUsername(credential.getUsername());
 
         if (existingUser.isPresent()) {
-            // Eğer kullanıcı mevcutsa, uygun bir hata mesajı döndür
-            return "Username already exists";
+            // Eğer kullanıcı mevcutsa, hata fırlat.
+            throw new RuntimeException( "Username already exists");
+
         }
 
         // Yeni kullanıcı oluştur
