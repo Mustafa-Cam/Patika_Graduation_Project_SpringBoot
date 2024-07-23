@@ -1,7 +1,7 @@
 ﻿# Patika ve Fmss bilişimin düzenlediği fullstack bootcamp'inin spring boot ile backend tarafı. 
  
 # Docker Compose
- swiggy app servisinde resource'deki docker-compose.yml dosyaını çalıştırın (kendi passwordalerinizi .env dosyasında belirtebilirsiniz).
+ swiggy app servisinde resource'deki docker-compose.yml dosyasını çalıştırın (kendi password'lerinizi .env dosyasında belirtebilirsiniz).
 
 # Servisler
 ## 9 tane servisimiz var.
