@@ -10,4 +10,4 @@
 Service kısmında Spring boot'a gelip run butona tıklayınız. 
 ![image](https://github.com/user-attachments/assets/f5c69635-513b-46ac-8f5d-be49cbbe82f2)
 
-Bu şekilde servislerimiz çalışacaktır.
+Bu şekilde servislerimiz çalışacaktır. (Docker'ı çalıştırmayı unutmayın.)
