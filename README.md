@@ -4,7 +4,7 @@
  swiggy app servisinde resource'deki docker-compose.yml dosyasını çalıştırın (kendi password'lerinizi .env dosyasında belirtebilirsiniz).
 
 # Servisler
-## 9 tane servisimiz var.
+## 9 tane servisimiz var.(Notification Servis eksik.)
 ![image](https://github.com/user-attachments/assets/e8e37139-0bd0-4d58-a711-53997bfff84a)
 
 Service kısmında Spring boot'a gelip run butona tıklayınız. 
