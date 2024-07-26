@@ -14,3 +14,14 @@ Bu şekilde servislerimiz çalışacaktır. (Docker'ı çalıştırmayı unutmay
 
 Her şey sorunsuz ise Frontend kısmına geçebiliriz.
 https://github.com/Mustafa-Cam/PatikaGraduationProjectNext
+
+Admin oluştururken postman'den 
+{
+    "username":"Admin2",
+    "email":"Mustafa@gmail",
+    "password":"deneme123",
+    "role":"ADMIN"
+}
+http://localhost:8080/auth/register
+Bu endpoint'e post isteği atıyoruz role kısmı girilmez ise default olarak User olacaktır. Ancak bunun açığı var. Bu şekilde olmaz. Bunun için Eğer Role bilgisi Admin ise ek olarak secret alanı da eklenmeli ve backend'in belirlediği secret girilmelidir. Aklıma bu çözüm geldi. Farklı ççözümler de vardır. Araştıracağım.
+
