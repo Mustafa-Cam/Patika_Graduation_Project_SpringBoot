@@ -23,5 +23,5 @@ Admin oluştururken postman'den
     "role":"ADMIN"
 }
 http://localhost:8080/auth/register
-Bu endpoint'e post isteği atıyoruz (role kısmı girilmez ise default olarak User olacaktır). Ancak bunun açığı var. Bu şekilde olmaz. Bunun için Eğer Role bilgisi Admin ise ek olarak secret alanı da eklenmeli ve backend'in belirlediği secret girilmelidir. Aklıma bu çözüm geldi. Database'den direkt olarak Role bilgisini de değiştirebiliriz. Aklıma bu iki çözüm geldi.
+Bu endpoint'e post isteği atıyoruz (role kısmı girilmez ise default olarak User olacaktır). Ancak bunun açığı var. Bu şekilde olmaz. Bunun için Eğer Role bilgisi Admin ise ek olarak secret alanı da eklenmeli ve backend'in belirlediği secret girilmelidir. Ya da Database'den direkt olarak Role bilgisini de değiştirebiliriz. Aklıma bu iki çözüm geldi.
 
